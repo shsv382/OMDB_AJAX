@@ -8,6 +8,10 @@ $(document).ready(function() {
 	s.onkeyup = function() {
 		ul.innerHTML = "";
 		search();
+		if (more.getBoundingClientRect().top <= document.documentElement.clientHeight) {
+			counter++;
+			search();
+		}
 	}
 
 	more.onclick = function() {
@@ -15,9 +19,11 @@ $(document).ready(function() {
 		search();
 	}
 
+	up.onclick = function() {
+		window.scrollTo(0,0);
+	}
+
 	document.body.onscroll = function() {
-		console.log("more:" + more.getBoundingClientRect().top);
-		console.log("doc:" + document.body.clientHeight);
 		if (more.getBoundingClientRect().top <= document.documentElement.clientHeight) {
 			counter++;
 			search();
@@ -42,6 +48,7 @@ $(document).ready(function() {
 				ul.appendChild(li);
 			}
 		};
+
 	}
 
 });
